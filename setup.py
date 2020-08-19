@@ -41,6 +41,7 @@ setup(
         'Django>=3.0,<3.1',
         'djangorestframework',
         'dj-database-url',
+        'django-autoslug',
     ],
     extras_require={
         'dev': [

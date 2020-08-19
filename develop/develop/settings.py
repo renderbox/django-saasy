@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'saasy',
+    'django.contrib.sites',
+    'saasy.apps.SaasyConfig',
 ]
 
 MIDDLEWARE = [
