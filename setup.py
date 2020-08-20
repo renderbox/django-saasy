@@ -43,6 +43,7 @@ setup(
         'dj-database-url',
         'django-autoslug',
         'django-extensions',
+        'django-model-utils',
     ],
     extras_require={
         'dev': [

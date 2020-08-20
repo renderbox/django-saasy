@@ -29,6 +29,8 @@ ALLOWED_HOSTS = []
 
 SITE_ID = 1
 
+LOGIN_REDIRECT_URL = '/'
+
 # Application definition
 
 INSTALLED_APPS = [
