@@ -13,6 +13,12 @@
     {% trans "Sign In" %}
   </h5>
 
+  <div class="card">
+    <div class="card-body">
+
+
+
+
   <form class="login" method="POST" action="{% url 'account_login' %}">
     {% csrf_token %}
     {{ form|crispy }}
@@ -63,5 +69,8 @@
     {% include "socialaccount/parts/login_extra.html" %}
 
   {% endif %}
+
+          </div>
+        </div>
 
 {% endblock %}

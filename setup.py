@@ -42,6 +42,7 @@ setup(
         'djangorestframework',
         'dj-database-url',
         'django-autoslug',
+        'django-extensions',
     ],
     extras_require={
         'dev': [
