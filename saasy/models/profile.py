@@ -6,19 +6,20 @@ from autoslug import AutoSlugField
 
 # config = apps.get_app_config('saasy')
 
+def set_user_profile_slug(instance):
+    return instance.user.username
+
+
 class Profile(models.Model):
 
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), on_delete=models.CASCADE, related_name="saasy_profile")
-    slug = AutoSlugField(populate_from='set_slug', unique=True, always_update=True)
+    slug = AutoSlugField(populate_from=set_user_profile_slug, unique=True, always_update=True)
 
     class Meta:
         verbose_name = _("Profile")
         verbose_name_plural = _("Profiles")
 
     def __str__(self):
-        return "{} Profile".format(self.user.username)
-
-    def set_slug(self, instance):
         return self.user.username
 
     def get_absolute_url(self):

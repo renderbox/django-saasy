@@ -7,6 +7,7 @@ class SaasyConfig(AppConfig):
     prefix = "SAASY"
     __profile_model = None
     __organization_model = None
+    __project_model = None
 
     def _setting(self, name, default=None):
         return getattr(settings, self.prefix + "_" + name, default)
@@ -32,3 +33,10 @@ class SaasyConfig(AppConfig):
         if not self.__organization_model:
             self.__organization_model = self.set_model_setting('ORGANIZATION_MODEL', 'saasy.models.organization.Organization')
         return self.__organization_model
+
+    @property
+    def PROJECT_MODEL(self):
+        """ User Profile for Saasy App """
+        if not self.__project_model:
+            self.__project_model = self.set_model_setting('PROJECT_MODEL', 'saasy.models.project.Project')
+        return self.__project_model

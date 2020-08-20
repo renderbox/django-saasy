@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -9,8 +11,9 @@ from autoslug import AutoSlugField
 class Organization(models.Model):
 
     name = models.CharField(_("Name"), max_length=80, blank=True)
-    uuid = models.UUIDField(_("UUID"))
+    uuid = models.UUIDField(_("UUID"), default=uuid.uuid4, editable=False, unique=True)
     slug = AutoSlugField(populate_from='name', unique=True, always_update=True)
+    personal = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = _("Organization")
