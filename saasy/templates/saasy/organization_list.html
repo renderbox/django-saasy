@@ -1,0 +1,31 @@
+{% extends "saasy/base.html" %}
+
+{% block title %}Saasy - Home{% endblock %}
+
+{% block content %}
+
+
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action">Dashboard</a>
+        <a href="{% url "saasy:organization-list" %}" class="list-group-item list-group-item-action active">Organizations</a>
+        <a href="#" class="list-group-item list-group-item-action">Teams</a>
+        <a href="#" class="list-group-item list-group-item-action">Projects</a>
+      </ul>
+    </div>
+
+    <div class="col-9">
+      <h3>Organizations</h3><a href="{% url "saasy:organization-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Add Organization</a>
+
+
+    <ul class="list-group">
+    {% for org in object_list %}<li class="list-group-item d-flex justify-content-between align-items-center"><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></li>{% endfor %}
+    </ul>
+    
+
+
+    </div>
+  </div>
+
+{% endblock %}

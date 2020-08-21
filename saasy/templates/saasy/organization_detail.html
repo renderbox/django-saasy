@@ -1,0 +1,31 @@
+{% extends "saasy/base.html" %}
+
+{% block title %}Saasy - Home{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+    <div class="col">
+      <ul class="list-group">
+        <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action">Dashboard</a>
+        <a href="{% url "saasy:organization-list" %}" class="list-group-item list-group-item-action active">Organizations</a>
+        <a href="#" class="list-group-item list-group-item-action">Teams</a>
+        <a href="#" class="list-group-item list-group-item-action">Projects</a>
+      </ul>
+    </div>
+
+    <div class="col-9">
+      <h1><small>Organization:</small> {{ object.name }}</h1>
+      <hr>
+      Detail
+      <h3>Teams</h3>
+      list
+      Add
+      <h3>Projects</h3>
+      list
+      Add
+      <h3>
+    </div>
+  </div>
+
+{% endblock %}

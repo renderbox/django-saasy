@@ -1,4 +1,20 @@
+from django.conf import settings
 from django.views.generic import TemplateView
+
+from saasy.models import SaasyProfile
+
+from .team import TeamListView, TeamDetailView
+from .organization import OrganizationListView, OrganizationDetailView, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
+from .project import ProjectListView, ProjectDetailView
+from .profile import ProfileDetailView
+
+from saasy.models import Organization
 
 class DashboardView(TemplateView):
     template_name = "saasy/dashboard.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        profile = self.request.user.saasy_profile.get(site=settings.SITE_ID)
+        context['organizations'] = Organization.on_site.filter(owner=profile)[:5]
+        return context

@@ -1,10 +1,11 @@
 import uuid
 
-from django.conf import settings
+# from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.contrib.sites.models import Site
-from django.apps import apps
+from django.contrib.sites.managers import CurrentSiteManager
+from django.urls import reverse
 
 from autoslug import AutoSlugField
 
@@ -18,6 +19,8 @@ class Organization(models.Model):
     personal = models.BooleanField(default=False)
     owner = models.ForeignKey('saasy.SaasyProfile', verbose_name=_("Organization Owner"), on_delete=models.CASCADE, related_name="organizations")       # The top level person who controls the whole org
 
+    objects = models.Manager()
+    on_site = CurrentSiteManager()
 
     class Meta:
         verbose_name = _("Organization")
@@ -26,5 +29,5 @@ class Organization(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse( "saasy:organization-detail", kwargs={"slug": self.slug})
+    def get_absolute_url(self):
+        return reverse( "saasy:organization-detail", kwargs={"slug": self.slug})

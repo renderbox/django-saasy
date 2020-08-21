@@ -1,0 +1,30 @@
+{% extends "saasy/base.html" %}
+
+{% block title %}Saasy - Home{% endblock %}
+
+{% block content %}
+<h1>Organization Detail</h1>
+<hr>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+<ul class="list-group">
+  <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action">Dashboard</a>
+  <a href="#" class="list-group-item list-group-item-action">Organizations</a>
+  <a href="#" class="list-group-item list-group-item-action active">Teams</a>
+  <a href="#" class="list-group-item list-group-item-action">Projects</a>
+</ul>
+
+    </div>
+    <div class="col-9">
+
+    <h2>Team</h2>
+
+    Detail
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

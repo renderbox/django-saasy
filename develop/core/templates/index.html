@@ -4,4 +4,27 @@
 
 {% block content %}
 <h1>Welcome to Django Saasy</h1>
+
+<div class="card-deck">
+    <div class="card border-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header">Orginizations</div>
+        <div class="card-body">
+            <p class="card-text">{{ organization_count }}</p>
+        </div>
+    </div>
+
+    <div class="card border-success mb-3" style="max-width: 18rem;">
+        <div class="card-header">Projects</div>
+        <div class="card-body">
+            <p class="card-text">{{ project_count }}</p>
+        </div>
+    </div>
+
+    <div class="card border-info mb-3" style="max-width: 18rem;">
+        <div class="card-header">Users</div>
+        <div class="card-body">
+            <p class="card-text">{{ user_count }}</p>
+        </div>
+    </div>
+</div>
 {% endblock %}
