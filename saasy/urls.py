@@ -5,5 +5,5 @@ from saasy import views
 app_name = "saasy"
 
 urlpatterns = [
-    path("", views.SaasyIndexView.as_view(), name="index"),
+    path("dashboard", views.DashboardView.as_view(), name="dashboard"),
 ]
