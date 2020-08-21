@@ -43,10 +43,11 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django_extensions',
     'crispy_forms',
+    'core',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'saasy.apps.SaasyConfig',
+    'saasy',
 ]
 
 MIDDLEWARE = [

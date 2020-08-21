@@ -5,7 +5,7 @@ from django.contrib.sites.models import Site
 
 from autoslug import AutoSlugField
 
-# config = apps.get_app_config('saasy')
+from saasy import config
 
 def set_user_profile_slug(instance):
     return instance.user.username

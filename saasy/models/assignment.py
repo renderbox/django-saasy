@@ -8,10 +8,12 @@ from django.utils.translation import gettext_lazy as _
 
 from autoslug import AutoSlugField
 
+from saasy import config
+
 from .role import Role
 from .team import Team
 
-config = apps.get_app_config('saasy')
+# config = apps.get_app_config('saasy')
 
 class Assignment(models.Model):
     """

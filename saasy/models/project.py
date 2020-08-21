@@ -6,7 +6,9 @@ from django.utils.translation import gettext_lazy as _
 
 from autoslug import AutoSlugField
 
-config = apps.get_app_config('saasy')
+from saasy import config
+
+# config = apps.get_app_config('saasy')
 
 class Project(models.Model):
 
@@ -22,6 +24,7 @@ class Project(models.Model):
     class Meta:
         verbose_name = _("Project")
         verbose_name_plural = _("Projects")
+        swappable = True
 
     def __str__(self):
         return self.name

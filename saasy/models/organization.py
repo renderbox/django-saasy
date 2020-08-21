@@ -7,7 +7,9 @@ from django.apps import apps
 
 from autoslug import AutoSlugField
 
-config = apps.get_app_config('saasy')
+from saasy import config
+
+# config = apps.get_app_config('saasy')
 
 
 class Organization(models.Model):

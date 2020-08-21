@@ -4,9 +4,11 @@ from django.db import models
 from django.apps import apps
 from django.utils.translation import gettext_lazy as _
 
+from saasy import config
+
 from .role import Role
 
-config = apps.get_app_config('saasy')
+# config = apps.get_app_config('saasy')
 
 
 class Membership(models.Model):
