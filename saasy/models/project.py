@@ -20,7 +20,6 @@ class Project(models.Model):
     class Meta:
         verbose_name = _("Project")
         verbose_name_plural = _("Projects")
-        swappable = "SAASY_PROJECT_MODEL"
 
     def __str__(self):
         return self.name
