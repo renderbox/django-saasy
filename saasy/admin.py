@@ -1,10 +1,10 @@
 from django.contrib import admin
 
-from .models import Profile, Organization, Membership, Project, Team, TeamRole, TeamAssignment
+from .models import SaasyProfile, Organization, Membership, Project, Team, Role, Assignment
 
 
-@admin.register(Profile)
-class ProfileAdmin(admin.ModelAdmin):
+@admin.register(SaasyProfile)
+class SaasyProfileAdmin(admin.ModelAdmin):
     list_display = ('user', 'id', 'slug')
     list_filter = ('user',)
     search_fields = ('slug',)
@@ -36,13 +36,13 @@ class TeamAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 
-@admin.register(TeamRole)
-class TeamRoleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id', 'uuid')
+@admin.register(Role)
+class RoleAdmin(admin.ModelAdmin):
+    list_display = ('name', 'id', 'uuid', 'slug')
     search_fields = ('name',)
 
 
-@admin.register(TeamAssignment)
-class TeamAssignmentAdmin(admin.ModelAdmin):
+@admin.register(Assignment)
+class AssignmentAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'uuid', 'team', 'project')
     list_filter = ('team', 'project')

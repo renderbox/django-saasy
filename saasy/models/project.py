@@ -10,9 +10,14 @@ config = apps.get_app_config('saasy')
 
 class Project(models.Model):
 
+    class Visibility(models.IntegerChoices):
+        PUBLIC = 1, _('Public')
+        PRIVATE = 2, _('Private')
+
     name = models.CharField(_("Name"), max_length=80, blank=True)
     slug = AutoSlugField(populate_from='name', unique=True, always_update=True)                                                                         # Gets set in the save
     organization = models.ForeignKey(config.ORGANIZATION_MODEL, verbose_name=_("Organization"), on_delete=models.CASCADE, related_name="projects")
+    visibility = models.IntegerField(choices=Visibility.choices, default=Visibility.PUBLIC)
 
     class Meta:
         verbose_name = _("Project")
@@ -22,4 +27,4 @@ class Project(models.Model):
         return self.name
 
 #     def get_absolute_url(self):
-#         return reverse( "samplemodel_detail", kwargs={"slug": self.slug})
+#         return reverse( "saasy:project-detail", kwargs={"slug": self.slug})

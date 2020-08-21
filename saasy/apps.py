@@ -24,7 +24,7 @@ class SaasyConfig(AppConfig):
     def PROFILE_MODEL(self):
         """ User Profile for Saasy App """
         if not self.__profile_model:
-            self.__profile_model = self.set_model_setting('PROFILE_MODEL', 'saasy.models.profile.Profile')
+            self.__profile_model = self.set_model_setting('PROFILE_MODEL', 'saasy.models.profile.SaasyProfile')
         return self.__profile_model
 
     @property

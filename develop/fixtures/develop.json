@@ -1,0 +1,189 @@
+[
+{
+    "model": "auth.group",
+    "pk": 1,
+    "fields": {
+        "name": "Administration",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 2,
+    "fields": {
+        "name": "User",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.group",
+    "pk": 3,
+    "fields": {
+        "name": "Contributor",
+        "permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+        "password": "pbkdf2_sha256$180000$aK93YXWWUAcX$l7IhEaAxFrY+iGd2F6fRy/7+kjbGn2pl8X3N4Oqbuno=",
+        "last_login": "2020-08-21T00:05:01.292Z",
+        "is_superuser": true,
+        "username": "gviklund",
+        "first_name": "",
+        "last_name": "",
+        "email": "grantv@whitemoonlabs.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-08-21T00:04:33.276Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sites.site",
+    "pk": 1,
+    "fields": {
+        "domain": "example.com",
+        "name": "example.com"
+    }
+},
+{
+    "model": "saasy.saasyprofile",
+    "pk": 1,
+    "fields": {
+        "user": 1,
+        "slug": "gviklund",
+        "tier": 2,
+        "site": 1
+    }
+},
+{
+    "model": "saasy.organization",
+    "pk": 1,
+    "fields": {
+        "name": "gviklund",
+        "uuid": "1ff85553-60c6-4d7e-b14f-0557ca7a9e3a",
+        "slug": "gviklund",
+        "site": null,
+        "personal": true,
+        "owner": 1
+    }
+},
+{
+    "model": "saasy.organization",
+    "pk": 2,
+    "fields": {
+        "name": "The First Order",
+        "uuid": "c07bd450-a88a-489c-a829-ed2f55ac99f0",
+        "slug": "the-first-order",
+        "site": null,
+        "personal": false,
+        "owner": 1
+    }
+},
+{
+    "model": "saasy.role",
+    "pk": 1,
+    "fields": {
+        "name": "Administrator",
+        "uuid": "c8f05627-ee1b-44f8-83c2-4ed95a9a89ce",
+        "slug": "administrator"
+    }
+},
+{
+    "model": "saasy.role",
+    "pk": 2,
+    "fields": {
+        "name": "User",
+        "uuid": "23ecaf66-7527-423f-bd10-fdfe969b5f6b",
+        "slug": "user"
+    }
+},
+{
+    "model": "saasy.role",
+    "pk": 3,
+    "fields": {
+        "name": "Contributor",
+        "uuid": "ae49f267-f223-4b81-b809-e45e06f6e72b",
+        "slug": "contributor"
+    }
+},
+{
+    "model": "saasy.membership",
+    "pk": 1,
+    "fields": {
+        "profile": 1,
+        "organization": 1,
+        "uuid": "88aaa4e0-f4fd-4d82-bc34-18210cdcf936",
+        "role": 1
+    }
+},
+{
+    "model": "saasy.membership",
+    "pk": 2,
+    "fields": {
+        "profile": 1,
+        "organization": 2,
+        "uuid": "3669fa8d-9da2-41cf-a68d-45cd92f1ae2c",
+        "role": 1
+    }
+},
+{
+    "model": "saasy.project",
+    "pk": 1,
+    "fields": {
+        "name": "Personal Project",
+        "slug": "personal-project",
+        "organization": 1,
+        "visibility": 2
+    }
+},
+{
+    "model": "saasy.project",
+    "pk": 2,
+    "fields": {
+        "name": "The Fisrt Group Project",
+        "slug": "the-fisrt-group-project",
+        "organization": 2,
+        "visibility": 1
+    }
+},
+{
+    "model": "saasy.team",
+    "pk": 1,
+    "fields": {
+        "name": "First Personal Team - A",
+        "slug": "first-personal-team-a",
+        "organization": 1,
+        "members": [
+            1
+        ]
+    }
+},
+{
+    "model": "saasy.team",
+    "pk": 2,
+    "fields": {
+        "name": "First Order Team - A",
+        "slug": "first-order-team-a",
+        "organization": 2,
+        "members": [
+            2
+        ]
+    }
+},
+{
+    "model": "saasy.assignment",
+    "pk": 1,
+    "fields": {
+        "uuid": "632c8f37-a68e-4ea5-8ac7-2aa370547747",
+        "team": 1,
+        "project": 1,
+        "roles": [
+            1
+        ]
+    }
+}
+]
