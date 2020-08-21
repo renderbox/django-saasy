@@ -8,12 +8,6 @@ from django.utils.translation import gettext_lazy as _
 
 from autoslug import AutoSlugField
 
-from saasy import config
-
-from .role import Role
-from .team import Team
-
-# config = apps.get_app_config('saasy')
 
 class Assignment(models.Model):
     """
@@ -21,9 +15,9 @@ class Assignment(models.Model):
     """
 
     uuid = models.UUIDField(_("UUID"), default=uuid.uuid4, editable=False, unique=True)
-    team = models.ForeignKey(Team, verbose_name=_("Team"), on_delete=models.CASCADE, related_name="roles")
-    project = models.ForeignKey(config.PROJECT_MODEL, verbose_name=_("Project"), on_delete=models.CASCADE, related_name="roles")
-    roles = models.ManyToManyField(Role, verbose_name=_("Roles"))
+    team = models.ForeignKey('saasy.Team', verbose_name=_("Team"), on_delete=models.CASCADE, related_name="roles")
+    project = models.ForeignKey('saasy.Project', verbose_name=_("Project"), on_delete=models.CASCADE, related_name="roles")
+    roles = models.ManyToManyField('saasy.Role', verbose_name=_("Roles"))
 
     class Meta:
         verbose_name = _("Assignment")

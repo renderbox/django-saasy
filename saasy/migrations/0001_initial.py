@@ -71,7 +71,7 @@ class Migration(migrations.Migration):
             name='SaasyProfile',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('slug', autoslug.fields.AutoSlugField(always_update=True, editable=False, populate_from=saasy.models.profile.set_user_profile_slug, unique=True)),
+                ('slug', autoslug.fields.AutoSlugField(always_update=True, editable=False, populate_from=saasy.models.profile.set_user_username_as_slug, unique=True)),
                 ('tier', models.IntegerField(choices=[(1, 'Free'), (2, 'Paid')], default=1)),
                 ('site', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, related_name='saasy_profiles', to='sites.Site')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='saasy_profile', to=settings.AUTH_USER_MODEL, verbose_name='User')),

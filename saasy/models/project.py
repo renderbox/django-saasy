@@ -6,10 +6,6 @@ from django.utils.translation import gettext_lazy as _
 
 from autoslug import AutoSlugField
 
-from saasy import config
-
-# config = apps.get_app_config('saasy')
-
 class Project(models.Model):
 
     class Visibility(models.IntegerChoices):
@@ -18,13 +14,13 @@ class Project(models.Model):
 
     name = models.CharField(_("Name"), max_length=80, blank=True)
     slug = AutoSlugField(populate_from='name', unique=True, always_update=True)                                                                         # Gets set in the save
-    organization = models.ForeignKey(config.ORGANIZATION_MODEL, verbose_name=_("Organization"), on_delete=models.CASCADE, related_name="projects")
+    organization = models.ForeignKey('saasy.Organization', verbose_name=_("Organization"), on_delete=models.CASCADE, related_name="projects")
     visibility = models.IntegerField(choices=Visibility.choices, default=Visibility.PUBLIC)
 
     class Meta:
         verbose_name = _("Project")
         verbose_name_plural = _("Projects")
-        swappable = True
+        swappable = "SAASY_PROJECT_MODEL"
 
     def __str__(self):
         return self.name
