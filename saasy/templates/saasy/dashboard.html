@@ -7,52 +7,69 @@
 <hr>
 <div class="container">
   <div class="row">
+
     <div class="col">
-
-<ul class="list-group">
-  <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action active">Dashboard</a>
-  <a href="{% url "saasy:organization-list" %}" class="list-group-item list-group-item-action">Organizations</a>
-  <a href="#" class="list-group-item list-group-item-action">Teams</a>
-  <a href="#" class="list-group-item list-group-item-action">Projects</a>
-</ul>
-
+      <ul class="list-group">
+        <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action active">Dashboard</a>
+        <a href="{% url "saasy:organization-list" %}" class="list-group-item list-group-item-action">Organizations</a>
+        <a href="#" class="list-group-item list-group-item-action">Teams</a>
+        <a href="#" class="list-group-item list-group-item-action">Projects</a>
+      </ul>
     </div>
+
     <div class="col-9">
 
-<h2>Organizations</h2>
+    <h2>Organizations</h2>
 
-<div class="row">
-  {% for org in organizations %}
-  <div class="col-sm-4">
-    <div class="card">
-      <img class="card-img-top" src="https://via.placeholder.com/180x100.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title"><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="row">
+      {% for org in organizations %}
+      <div class="col-sm-4">
+        <div class="card">
+          <img class="card-img-top" src="https://via.placeholder.com/180x100.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{ org.get_absolute_url }}">{{ org.name }}</a></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
       </div>
+      {% endfor %}
     </div>
-  </div>
-  {% endfor %}
-</div>
 
+    <hr>
 
+    <h2>Projects</h2>
+    
+    <div class="row">
+      {% for project in projects %}
+      <div class="col-sm-4">
+        <div class="card">
+          <img class="card-img-top" src="https://via.placeholder.com/180x100.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{ project.get_absolute_url }}">{{ project.name }}</a></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
+    <hr>
 
-<hr>
+    <h2>Teams</h2>
 
-<h2>Projects</h2>
-<ul>
-<li></li>
-</ul>
-
-
-<hr>
-
-<h2>Teams</h2>
-<ul>
-<li></li>
-</ul>
-
+    <div class="row">
+      {% for team in teams %}
+      <div class="col-sm-4">
+        <div class="card">
+          <img class="card-img-top" src="https://via.placeholder.com/180x100.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title"><a href="{{ team.get_absolute_url }}">{{ team.name }}</a></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
 
     </div>
   </div>
