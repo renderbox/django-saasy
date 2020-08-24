@@ -3,6 +3,7 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.apps import apps
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 from autoslug import AutoSlugField
 
@@ -24,5 +25,11 @@ class Project(models.Model):
     def __str__(self):
         return self.name
 
-#     def get_absolute_url(self):
-#         return reverse( "saasy:project-detail", kwargs={"slug": self.slug})
+    def get_absolute_url(self):
+        return reverse( "saasy:project-detail", kwargs={"slug": self.slug})
+
+    def get_update_url(self):
+        return reverse( "saasy:project-update", kwargs={"slug": self.slug})
+
+    def get_delete_url(self):
+        return reverse( "saasy:project-delete", kwargs={"slug": self.slug})

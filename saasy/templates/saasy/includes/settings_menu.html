@@ -1,0 +1,6 @@
+      <ul class="list-group">
+        <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action{% if active == "dashboard" %} active{% endif %}">Dashboard</a>
+        <a href="{% url "saasy:organization-list" %}" class="list-group-item list-group-item-action{% if active == "organization" %} active{% endif %}">Organizations</a>
+        <a href="{% url "saasy:team-list" %}" class="list-group-item list-group-item-action{% if active == "team" %} active{% endif %}">Teams</a>
+        <a href="{% url "saasy:project-list" %}" class="list-group-item list-group-item-action{% if active == "project" %} active{% endif %}">Projects</a>
+      </ul>

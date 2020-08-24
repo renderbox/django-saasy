@@ -3,9 +3,9 @@ from django.views.generic import TemplateView
 
 from saasy.models import SaasyProfile
 
-from .team import TeamListView, TeamDetailView
+from .team import TeamListView, TeamDetailView, TeamCreateView, TeamUpdateView, TeamDeleteView
 from .organization import OrganizationListView, OrganizationDetailView, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
-from .project import ProjectListView, ProjectDetailView
+from .project import ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView
 from .profile import ProfileDetailView
 
 from saasy.models import Organization, Project, Team

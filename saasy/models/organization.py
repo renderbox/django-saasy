@@ -12,10 +12,10 @@ from autoslug import AutoSlugField
 
 class Organization(models.Model):
 
-    name = models.CharField(_("Name"), max_length=80, blank=True)
+    name = models.CharField(_("Name"), max_length=80)
     uuid = models.UUIDField(_("UUID"), default=uuid.uuid4, editable=False, unique=True)
     slug = AutoSlugField(populate_from='name', unique=True, always_update=True)
-    site = models.ForeignKey(Site, on_delete=models.CASCADE, blank=True, null=True, related_name="organizations")        # Overwriting this field from Base Class to change the related_name
+    site = models.ForeignKey(Site, on_delete=models.CASCADE, related_name="organizations")        # Overwriting this field from Base Class to change the related_name
     personal = models.BooleanField(default=False)
     owner = models.ForeignKey('saasy.SaasyProfile', verbose_name=_("Organization Owner"), on_delete=models.CASCADE, related_name="organizations")       # The top level person who controls the whole org
 
@@ -31,3 +31,9 @@ class Organization(models.Model):
 
     def get_absolute_url(self):
         return reverse( "saasy:organization-detail", kwargs={"slug": self.slug})
+
+    def get_update_url(self):
+        return reverse( "saasy:organization-update", kwargs={"slug": self.slug})
+
+    def get_delete_url(self):
+        return reverse( "saasy:organization-delete", kwargs={"slug": self.slug})

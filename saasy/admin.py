@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import SaasyProfile, Organization, Membership, Project, Team, Role, Assignment
+from .models import SaasyProfile, Organization, Membership, Project, Team, Assignment
 
 
 @admin.register(SaasyProfile)
@@ -33,12 +33,6 @@ class ProjectAdmin(admin.ModelAdmin):
 class TeamAdmin(admin.ModelAdmin):
     list_display = ('name', 'id', 'organization')
     list_filter = ('organization',)
-    search_fields = ('name',)
-
-
-@admin.register(Role)
-class RoleAdmin(admin.ModelAdmin):
-    list_display = ('name', 'id', 'uuid', 'slug')
     search_fields = ('name',)
 
 

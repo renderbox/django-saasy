@@ -1,21 +1,14 @@
 {% extends "saasy/base.html" %}
 
-{% block title %}Saasy - Home{% endblock %}
+{% block title %}Project Detail{% endblock %}
 
 {% block content %}
-<h1>Organization Detail</h1>
+<h1>Project Detail</h1>
 <hr>
 <div class="container">
   <div class="row">
     <div class="col">
-
-<ul class="list-group">
-  <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action">Dashboard</a>
-  <a href="#" class="list-group-item list-group-item-action">Organizations</a>
-  <a href="#" class="list-group-item list-group-item-action">Teams</a>
-  <a href="#" class="list-group-item list-group-item-action active">Projects</a>
-</ul>
-
+      {% include "./includes/settings_menu.html" with active="project" %}
     </div>
     <div class="col-9">
 

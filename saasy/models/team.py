@@ -5,6 +5,7 @@ from django.contrib.sites.models import Site
 from django.db import models
 from django.apps import apps
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
 
 from autoslug import AutoSlugField
 
@@ -24,5 +25,11 @@ class Team(models.Model):
     def __str__(self):
         return self.name
 
-    # def get_absolute_url(self):
-    #     return reverse( "saasy:team-detail", kwargs={"org": self.organization.slug, "slug": self.slug})
+    def get_absolute_url(self):
+        return reverse( "saasy:team-detail", kwargs={"slug": self.slug})
+
+    def get_update_url(self):
+        return reverse( "saasy:team-update", kwargs={"slug": self.slug})
+
+    def get_delete_url(self):
+        return reverse( "saasy:team-delete", kwargs={"slug": self.slug})

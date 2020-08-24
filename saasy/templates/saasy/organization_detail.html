@@ -1,36 +1,18 @@
 {% extends "saasy/base.html" %}
 
-{% block title %}Saasy - Home{% endblock %}
+{% block title %}Organization Detail{% endblock %}
 
 {% block content %}
 
   <div class="row">
     <div class="col">
-      <ul class="list-group">
-        <a href="{% url "saasy:dashboard" %}" class="list-group-item list-group-item-action">Dashboard</a>
-        <a href="{% url "saasy:organization-list" %}" class="list-group-item list-group-item-action active">Organizations</a>
-        <a href="#" class="list-group-item list-group-item-action">Teams</a>
-        <a href="#" class="list-group-item list-group-item-action">Projects</a>
-      </ul>
+      {% include "./includes/settings_menu.html" with active="organization" %}
     </div>
 
     <div class="col-9">
       <h3><small>Organization:</small> {{ object.name }}</h3>
       <hr>
-      Detail
-      <hr>
-      <div class="row">
-        <div class="col">
-          <h4>Teams</h4>
-        </div>
-        <div class="col-4 text-right">
-          <a href="{% url "saasy:organization-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Add Team</a>
-        </div>
-      </div>
-
-      <ul class="list-group">
-      {% for team in object.teams.all %}<li class="list-group-item d-flex justify-content-between align-items-center"><a href="#">{{ team.name }}</a></li>{% endfor %}
-      </ul>
+      Details
 
       <hr>
       <div class="row">
@@ -38,7 +20,7 @@
           <h4>Projects</h4>
         </div>
         <div class="col-4 text-right">
-          <a href="{% url "saasy:organization-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Add Project</a>
+          <a href="{% url "saasy:project-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Add Project</a>
         </div>
       </div>
 
@@ -49,6 +31,41 @@
       {% else %}
       <i>No projects yet</i>
       {% endif %}
+
+      <hr>
+      <div class="row">
+        <div class="col">
+          <h4>Teams</h4>
+        </div>
+        <div class="col-4 text-right">
+          <a href="{% url "saasy:team-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Add Team</a>
+        </div>
+      </div>
+
+      <ul class="list-group">
+      {% for team in object.teams.all %}<li class="list-group-item d-flex justify-content-between align-items-center"><a href="#">{{ team.name }}</a></li>{% endfor %}
+      </ul>
+
+      <hr>
+      <div class="row">
+        <div class="col">
+          <h4>Members</h4>
+        </div>
+        <div class="col-4 text-right">
+          <a href="{% url "saasy:organization-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Invite Member</a>
+        </div>
+      </div>
+
+
+      {% if object.memberships.all %}
+      <ul class="list-group">
+      {% for membership in object.memberships.all %}<li class="list-group-item d-flex justify-content-between align-items-center"><a href="#">{{ membership.profile.slug }}</a></li>{% endfor %}
+      </ul>
+      {% else %}
+      <i>No members yet</i>
+      {% endif %}
+
+
 
     </div>
   </div>
