@@ -21,8 +21,18 @@ class TeamDetailView(DetailView):
 
 class TeamCreateView(CreateView):
     model = Team
-    fields = ['name']
+    fields = ['name', 'organization']
     # form_class = TeamForm
+
+    # TODO: Filter organizations to where the user is the owner
+    # TODO: Expand Filter of Organiztions to ones where the user is Member with Admin Privilages
+
+    # TODO: If 'org' is passed in, set the default to the relevent org
+
+    def get_initial(self):
+        initial = super().get_initial()
+
+        return initial
 
     # def form_valid(self, form):
 

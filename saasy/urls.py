@@ -14,14 +14,14 @@ urlpatterns = [
     path("org/<slug:slug>/delete/", views.OrganizationDeleteView.as_view(), name="organization-delete"),
 
     path("projects/", views.ProjectListView.as_view(), name="project-list"),
-    path("projects/add/", views.ProjectListView.as_view(), name="project-create"),
-    path("project/<slug:slug>/", views.ProjectDetailView.as_view(), name="project-detail"),
-    path("project/<slug:slug>/update/", views.ProjectUpdateView.as_view(), name="project-update"),
-    path("project/<slug:slug>/delete/", views.ProjectDeleteView.as_view(), name="project-delete"),
+    path("projects/add/", views.ProjectCreateView.as_view(), name="project-create"),
+    path("orgs/<slug:org_slug>/<slug:slug>/", views.ProjectDetailView.as_view(), name="project-detail"),
+    path("orgs/<slug:org_slug>/<slug:slug>/update/", views.ProjectUpdateView.as_view(), name="project-update"),
+    path("orgs/<slug:org_slug>/<slug:slug>/delete/", views.ProjectDeleteView.as_view(), name="project-delete"),
 
     path("teams/", views.TeamListView.as_view(), name="team-list"),
-    path("teams/add/", views.TeamListView.as_view(), name="team-create"),
-    path("team/<slug:slug>/", views.TeamDetailView.as_view(), name="team-detail"),
-    path("team/<slug:slug>/update/", views.TeamUpdateView.as_view(), name="team-update"),
-    path("team/<slug:slug>/delete/", views.TeamDeleteView.as_view(), name="team-delete"),
+    path("teams/add/", views.TeamCreateView.as_view(), name="team-create"),
+    path("orgs/<slug:org_slug>/team/<slug:slug>/", views.TeamDetailView.as_view(), name="team-detail"),
+    path("orgs/<slug:org_slug>/team/<slug:slug>/update/", views.TeamUpdateView.as_view(), name="team-update"),
+    path("orgs/<slug:org_slug>/team/<slug:slug>/delete/", views.TeamDeleteView.as_view(), name="team-delete"),
 ]

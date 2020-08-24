@@ -26,10 +26,10 @@ class Project(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse( "saasy:project-detail", kwargs={"slug": self.slug})
+        return reverse( "saasy:project-detail", kwargs={"slug": self.slug, "org_slug": self.organization.slug })
 
     def get_update_url(self):
-        return reverse( "saasy:project-update", kwargs={"slug": self.slug})
+        return reverse( "saasy:project-update", kwargs={"slug": self.slug, "org_slug": self.organization.slug })
 
     def get_delete_url(self):
-        return reverse( "saasy:project-delete", kwargs={"slug": self.slug})
+        return reverse( "saasy:project-delete", kwargs={"slug": self.slug, "org_slug": self.organization.slug })

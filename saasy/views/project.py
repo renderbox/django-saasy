@@ -21,7 +21,7 @@ class ProjectDetailView(DetailView):
 
 class ProjectCreateView(CreateView):
     model = Project
-    fields = ['name']
+    fields = ['name', 'organization', 'visibility']
     # form_class = ProjectForm
 
     # def form_valid(self, form):

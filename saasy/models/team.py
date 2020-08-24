@@ -15,7 +15,7 @@ class Team(models.Model):
     name = models.CharField(_("Name"), max_length=80, blank=True)
     slug = AutoSlugField(populate_from='name', unique=True, always_update=True)                                                                         # Gets set in the save
     organization = models.ForeignKey('saasy.Organization', verbose_name=_("Organization"), on_delete=models.CASCADE, related_name="teams")
-    members = models.ManyToManyField('saasy.Membership', verbose_name=_("Members"), related_name="teams")
+    members = models.ManyToManyField('saasy.Membership', verbose_name=_("Members"), related_name="teams")                                               # Memberships in the Organiation
 
     class Meta:
         verbose_name = _("Team")
@@ -26,10 +26,10 @@ class Team(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse( "saasy:team-detail", kwargs={"slug": self.slug})
+        return reverse( "saasy:team-detail", kwargs={"slug": self.slug, "org_slug": self.organization.slug })
 
     def get_update_url(self):
-        return reverse( "saasy:team-update", kwargs={"slug": self.slug})
+        return reverse( "saasy:team-update", kwargs={"slug": self.slug, "org_slug": self.organization.slug })
 
     def get_delete_url(self):
-        return reverse( "saasy:team-delete", kwargs={"slug": self.slug})
+        return reverse( "saasy:team-delete", kwargs={"slug": self.slug, "org_slug": self.organization.slug })
