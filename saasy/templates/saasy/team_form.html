@@ -13,7 +13,7 @@
     <div class="col-9">
       <h3>Team: {% if object %}{{ object.name }}{%else%}Add{%endif%}</h3>
       <hr>
-        <form method="post"  action="{% url 'saasy:team-create' %}">
+        <form method="post" action="{% if object %}{{ object.get_update_url }}{%else%}{% url 'saasy:team-create' %}{%endif%}">
           {% csrf_token %}
           {{ form|crispy }}
           <a class="btn btn-warning" href="{% url 'saasy:team-list' %}" role="button">Cancel</a> <button type="submit" class="btn btn-primary">{% if object %}Update{%else%}Add{%endif%}</button>
