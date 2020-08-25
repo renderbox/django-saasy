@@ -7,6 +7,7 @@ from .team import TeamListView, TeamDetailView, TeamCreateView, TeamUpdateView, 
 from .organization import OrganizationListView, OrganizationDetailView, OrganizationCreateView, OrganizationUpdateView, OrganizationDeleteView
 from .project import ProjectListView, ProjectDetailView, ProjectCreateView, ProjectUpdateView, ProjectDeleteView
 from .profile import ProfileDetailView
+from .membership import MembershipUpdateView
 
 from saasy.models import Organization, Project, Team
 

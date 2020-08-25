@@ -13,6 +13,8 @@ urlpatterns = [
     path("org/<slug:slug>/update/", views.OrganizationUpdateView.as_view(), name="organization-update"),
     path("org/<slug:slug>/delete/", views.OrganizationDeleteView.as_view(), name="organization-delete"),
 
+    path("org/<slug:slug>/membership/", views.MembershipUpdateView.as_view(), name="membership-update"),
+
     path("projects/", views.ProjectListView.as_view(), name="project-list"),
     path("projects/add/", views.ProjectCreateView.as_view(), name="project-create"),
     path("orgs/<slug:org_slug>/<slug:slug>/", views.ProjectDetailView.as_view(), name="project-detail"),

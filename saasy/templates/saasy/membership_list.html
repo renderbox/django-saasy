@@ -1,0 +1,46 @@
+{% extends "saasy/base.html" %}
+
+{% block title %}Organization Detail{% endblock %}
+
+{% block content %}
+
+  <div class="row">
+
+    <div class="col">
+      {% include "./includes/settings_menu.html" with active="organization" %}
+    </div>
+
+    <div class="col-9">
+
+
+      <div class="row">
+        <div class="col">
+          <h2>Members of ##</h2>
+        </div>
+        <div class="col-4 text-right">
+          <a href="{% url "saasy:team-create" %}" class="btn btn-outline-success btn-sm" role="button" aria-pressed="true">Add Team</a>
+        </div>
+      </div>
+
+      <ul class="list-group">
+      {% for member in object_list %}<li class="list-group-item d-flex justify-content-between align-items-center">
+
+      <div class="row w-100">
+        <div class="col">
+          <a href="{{ member.get_absolute_url }}">{{ member.profile.slug }}</a>
+        </div>
+        {% if not team.personal %}
+        <div class="col-4 text-right">
+          <a href="#" class="btn btn-outline-secondary btn-sm" role="button" aria-pressed="true">Remove</a>
+        </div>
+        {% endif %}
+      </div>
+          </li>{% endfor %}
+      </ul>
+
+      <hr>
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -52,7 +52,7 @@
           <h4>Members</h4>
         </div>
         <div class="col-4 text-right">
-          <a href="{% url "saasy:organization-create" %}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Invite Member</a>
+          <a href="{{ object.get_membership_url }}" class="btn btn-light btn-lg active btn-sm" role="button" aria-pressed="true">Invite Member</a>
         </div>
       </div>
 

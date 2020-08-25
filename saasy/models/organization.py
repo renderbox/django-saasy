@@ -37,3 +37,6 @@ class Organization(models.Model):
 
     def get_delete_url(self):
         return reverse( "saasy:organization-delete", kwargs={"slug": self.slug})
+
+    def get_membership_url(self):
+        return reverse( "saasy:membership-update", kwargs={"slug": self.slug})
