@@ -4,8 +4,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.sites.models import Site
+from django import forms
 
-from saasy.models import Team
+from saasy.models import Team, Organization
 
 
 class TeamListView(ListView):
@@ -27,21 +28,15 @@ class TeamCreateView(CreateView):
     # TODO: Filter organizations to where the user is the owner
     # TODO: Expand Filter of Organiztions to ones where the user is Member with Admin Privilages
 
-    # TODO: If 'org' is passed in, set the default to the relevent org
+    def get_form(self, form_class=None):
+        """Return an instance of the form to be used in this view."""
+        form = super().get_form(form_class=form_class)
 
-    def get_initial(self):
-        initial = super().get_initial()
-
-        return initial
-
-    # def form_valid(self, form):
-
-    #     site = Site.objects.get_current()
-
-    #     form.instance.site = site                 # Set the current Org site
-    #     form.instance.owner = self.request.user.saasy_profile.get(site=site)     # Make the current user the Org owner
-
-    #     return super().form_valid(form)
+        if 'org' in self.request.GET:           # Set the initial value here
+            form.fields['organization'].initial = Organization.on_site.get(slug=self.request.GET['org'])        # Prepopulate the value
+            form.fields['organization'].widget = forms.HiddenInput()                                            # Hide it if known
+        
+        return form
 
 
 class TeamUpdateView(UpdateView):

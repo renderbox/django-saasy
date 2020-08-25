@@ -4,8 +4,9 @@ from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.sites.models import Site
+from django import forms
 
-from saasy.models import Project
+from saasy.models import Project, Organization
 
 
 class ProjectListView(ListView):
@@ -24,14 +25,15 @@ class ProjectCreateView(CreateView):
     fields = ['name', 'organization', 'visibility']
     # form_class = ProjectForm
 
-    # def form_valid(self, form):
+    def get_form(self, form_class=None):
+        """Return an instance of the form to be used in this view."""
+        form = super().get_form(form_class=form_class)
 
-    #     site = Site.objects.get_current()
-
-    #     form.instance.site = site                 # Set the current Org site
-    #     form.instance.owner = self.request.user.saasy_profile.get(site=site)     # Make the current user the Org owner
-
-    #     return super().form_valid(form)
+        if 'org' in self.request.GET:           # Set the initial value here
+            form.fields['organization'].initial = Organization.on_site.get(slug=self.request.GET['org'])        # Prepopulate the value
+            form.fields['organization'].widget = forms.HiddenInput()                                            # Hide it if known
+        
+        return form
 
 
 class ProjectUpdateView(UpdateView):
