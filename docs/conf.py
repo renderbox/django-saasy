@@ -26,8 +26,7 @@ copyright = '2020, Grant Viklund'
 author = 'Grant Viklund'
 
 # The full version, including alpha/beta/rc tags
-release = '0.1.0'
-
+release = version = django.conf.settings.BUILD_VERSION
 
 # -- General configuration ---------------------------------------------------
 
@@ -36,16 +35,13 @@ release = '0.1.0'
 # ones.
 extensions = [
     'sphinx_rtd_theme',
-    'recommonmark',
     'sphinx.ext.autodoc', 
     'sphinx.ext.coverage', 
     'sphinx.ext.napoleon',
+    'm2r',
 ]
 
-source_suffix = {
-    '.rst': 'restructuredtext',
-    '.md': 'markdown',
-}
+source_suffix = ['.rst', '.md']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

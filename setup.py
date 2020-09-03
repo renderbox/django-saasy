@@ -7,20 +7,27 @@
 from os import path
 from setuptools import setup, find_packages
 
-file_path = path.abspath(path.dirname(__file__))
+from saasy.__version__ import VERSION
 
-with open(path.join(file_path, 'README.md'), encoding='utf-8') as f:
-    long_description = f.read()
+readme_file = path.join(path.dirname(path.abspath(__file__)), 'README.md')
+
+try:
+    from m2r import parse_from_file
+    long_description = parse_from_file(readme_file)     # Convert the file to RST for PyPI
+except ImportError:
+    # m2r may not be installed in user environment
+    with open(readme_file) as f:
+        long_description = f.read()
 
 package_metadata = {
     'name': 'django-saasy',
-    'version': '0.1.0',
-    'description': "Common features used in SaaS applications",
+    'version': VERSION,
+    'description': "A simple project for setting up common features of SaaS based applications",
     'long_description': long_description,
     'url': 'https://github.com/renderbox/django-saasy/',
     'author': 'Grant Viklund',
     'author_email': 'renderbox@gmail.com',
-    'license': 'Not open source',
+    'license': 'MIT license',
     'classifiers': [
         'Development Status :: 2 - Pre-Alpha',
         'Intended Audience :: Developers',
@@ -46,23 +53,25 @@ setup(
         'django-model-utils',
     ],
     extras_require={
-        'dev': [
+        'dev': [                            # Packages needed by developers
             'django-crispy-forms',
             'django-allauth',
+            'django-extensions',
         ],
-        'test': [],
-        'prod': [],
-        'build': [
+        'test': [],                         # Packages needed to run tests
+        'prod': [],                         # Packages needed to run in the deployment
+        'build': [                          # Packages needed to build the package
             'setuptools',
             'wheel',
             'twine',
         ],
-        'docs': [
+        'docs': [                           # Packages needed to generate docs
             'coverage',
             'Sphinx',
-            'sphinx-bootstrap-theme',
-            'sphinx-rtd-theme',
             'sphinx-autobuild',
+            'recommonmark',
+            'rstcheck',
+            'sphinx-rtd-theme',  # Assumes a Read The Docs theme for opensource projects
         ],
     }
 )
