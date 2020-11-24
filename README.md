@@ -2,6 +2,8 @@
 
 ![Saasy CI](https://github.com/renderbox/django-saasy/workflows/Saasy%20Develop/badge.svg?branch=develop)
 
+[![Documentation Status](https://readthedocs.org/projects/django-saasy/badge/?version=latest)](https://django-saasy.readthedocs.io/en/latest/?badge=latest)
+
 This project is very much Pre-Alpha and changing a lot so it's reconmeneded not to be used quite yet.
 
 # Saasy
