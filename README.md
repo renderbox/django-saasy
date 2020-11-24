@@ -2,6 +2,8 @@
 
 ![Saasy CI](https://github.com/renderbox/django-saasy/workflows/Saasy%20Develop/badge.svg?branch=develop)
 
+This project is very much Pre-Alpha and changing a lot so it's reconmeneded not to be used quite yet.
+
 # Saasy
 
 A simple project for setting up common features of SaaS based applications

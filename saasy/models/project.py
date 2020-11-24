@@ -33,3 +33,9 @@ class Project(models.Model):
 
     def get_delete_url(self):
         return reverse( "saasy:project-delete", kwargs={"slug": self.slug, "org_slug": self.organization.slug })
+
+    def user_has_permission(self, user, permission):
+        '''
+        Based on a user's team membership, do they have the requested permission on this project?
+        '''
+        return True

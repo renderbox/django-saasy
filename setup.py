@@ -41,13 +41,12 @@ package_metadata = {
 setup(
     **package_metadata,
     packages=find_packages(),
-    package_data={'saasy': ['*.html']},
+    package_data={'saasy': ['templates/saasy/*.html', 'templates/saasy/*/*.html']},
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=[
         'Django>=3.0,<3.2',
         'djangorestframework',
-        'dj-database-url',
         'django-autoslug',
         'django-model-utils',
     ],
@@ -63,11 +62,13 @@ setup(
             'setuptools',
             'wheel',
             'twine',
+            'm2r',
         ],
         'docs': [                           # Packages needed to generate docs
+            'recommonmark',
+            'm2r',
             'coverage',
             'Sphinx',
-            'sphinx-autobuild',
             'recommonmark',
             'rstcheck',
             'sphinx-rtd-theme',  # Assumes a Read The Docs theme for opensource projects

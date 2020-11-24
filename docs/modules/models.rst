@@ -1,6 +1,6 @@
 Models
 ======
 
-.. automodule:: vendor.models
+.. automodule:: saasy.models
    :members:
    :undoc-members:

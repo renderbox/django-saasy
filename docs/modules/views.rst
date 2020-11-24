@@ -1,6 +1,6 @@
 Views
 =====
 
-.. automodule:: vendor.views
+.. automodule:: saasy.views
    :members:
    :undoc-members:

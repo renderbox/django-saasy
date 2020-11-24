@@ -10,10 +10,10 @@
     </div>
     <div class="col-9">
 
-    <h2>Team</h2>
+    <h2>{{ object.name }}</h2>
 
-    Detail
-
+    Organization: {{ object.organization }}<br>
+    Members: {{ object.members.all }}
     </div>
   </div>
 </div>

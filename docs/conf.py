@@ -14,6 +14,8 @@ import os
 import sys
 import django
 
+from saasy.__version__ import VERSION
+
 sys.path.insert(0, os.path.abspath('../develop'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'develop.settings'
 django.setup()
@@ -21,12 +23,12 @@ django.setup()
 
 # -- Project information -----------------------------------------------------
 
-project = 'Saasy'
+project = 'Django Saasy'
 copyright = '2020, Grant Viklund'
 author = 'Grant Viklund'
 
 # The full version, including alpha/beta/rc tags
-release = version = django.conf.settings.BUILD_VERSION
+release = version = VERSION
 
 # -- General configuration ---------------------------------------------------
 
@@ -34,14 +36,20 @@ release = version = django.conf.settings.BUILD_VERSION
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'recommonmark',
     'sphinx_rtd_theme',
-    'sphinx.ext.autodoc', 
-    'sphinx.ext.coverage', 
+    'sphinx.ext.todo',
+    'sphinx.ext.viewcode',
+    'sphinx.ext.autodoc',
+    'sphinx.ext.coverage',
     'sphinx.ext.napoleon',
-    'm2r',
 ]
 
-source_suffix = ['.rst', '.md']
+source_suffix = {
+    '.rst': 'restructuredtext',
+    '.txt': 'markdown',
+    '.md': 'markdown',
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
