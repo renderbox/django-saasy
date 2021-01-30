@@ -15,14 +15,9 @@ def set_user_username_as_slug(instance):
 
 class SaasyProfile(models.Model):
 
-    class Tier(models.IntegerChoices):
-        FREE = 1, _('Free')
-        PAID = 2, _('Paid')
-
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_("User"), on_delete=models.CASCADE, related_name="saasy_profile")
     slug = AutoSlugField(populate_from=set_user_username_as_slug, unique=True, always_update=True)
-    tier = models.IntegerField(choices=Tier.choices, default=Tier.FREE)
-    site = models.ForeignKey(Site, on_delete=models.CASCADE, blank=True, null=True, related_name="saasy_profiles")
+    site = models.ForeignKey(Site, on_delete=models.CASCADE, blank=True, null=True, related_name="saasy_profiles")      # Profile is per user on the site
 
     objects = models.Manager()
     on_site = CurrentSiteManager()
@@ -35,8 +30,11 @@ class SaasyProfile(models.Model):
     def __str__(self):
         return self.user.username
 
-    # def get_absolute_url(self):
-    #     return reverse( "saasy:profile-detail", kwargs={"slug": self.slug})
+    def role_on_project(self, project):
+        return None     # If a user has no role on a project
+
+    def get_absolute_url(self):
+        return reverse( "saasy:profile-detail", kwargs={"slug": self.slug})
 
 
 def create_user_profile(sender, instance, created, **kwargs):

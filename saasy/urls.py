@@ -26,4 +26,6 @@ urlpatterns = [
     path("orgs/<slug:org_slug>/team/<slug:slug>/", views.TeamDetailView.as_view(), name="team-detail"),
     path("orgs/<slug:org_slug>/team/<slug:slug>/update/", views.TeamUpdateView.as_view(), name="team-update"),
     path("orgs/<slug:org_slug>/team/<slug:slug>/delete/", views.TeamDeleteView.as_view(), name="team-delete"),
+
+    path("profile/<slug:slug>/", views.ProfileDetailView.as_view(), name="profile-detail")
 ]
